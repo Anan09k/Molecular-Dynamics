@@ -1,0 +1,70 @@
+dataset: AD-1
+model_config:
+  model_type: custom_attention_transformer_nvp
+  transformer_cvae_config: null
+  transformer_nvp_config: null
+  custom_transformer_nvp_config:
+    atom_embedding_dim: 32
+    latent_mlp_hidden_dims:
+    - 256
+    num_coupling_layers: 8
+    num_transformer_layers: 3
+    encoder_layer_config:
+      d_model: 128
+      dim_feedforward: 2048
+      dropout: 0.0
+      num_heads: 6
+      attention_type: kernel
+      lengthscales:
+      - 0.1
+      - 0.2
+      - 0.5
+      - 0.7
+      - 1.0
+      - 1.2
+      max_radius: null
+      normalise_kernel_values: true
+      cheb_order: null
+      force_asymptotic_zero: null
+    position_layer_index_mod_2: 0
+    conditional_flow_density:
+      scale_requires_grad: true
+      ignore_conditional_velocity: false
+      use_displacement_as_target: true
+  equivariant_nvp_config: null
+  gaussian_density_transformer_config: null
+step_width: 1000
+batch_size: 32
+num_epochs: 1000
+patience: 100
+data_augmentation: true
+measure_equivariance_discrepancy: false
+use_aml_logging: false
+loss:
+  nll: null
+  nll_and_energy: null
+  nll_and_acceptance: null
+loss_schedule: null
+run_prefix: ''
+optimizer: Adam
+learning_rate: 0.0001
+warmup_steps: 1000
+weight_decay: 0.0
+clip_grad_norm: null
+seed: 0
+randomise_seed: false
+data_dir: null
+dataset_cache_dir: .data
+dataset_use_lmdb: false
+pdb_dir: null
+output_folder: outputs
+enable_profiler: false
+saved_model_path: null
+valid_batch_size: 32
+min_check_point_iters: 5000
+random_velocities: true
+warm_start: false
+num_pdbs_per_local_batch: null
+equal_data_spacing: false
+run_valid_first: true
+lr_scheduler: null
